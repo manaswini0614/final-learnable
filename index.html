@@ -2,59 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/barbie-icon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-    <title>Barbie's Learning Adventure</title>
-    <meta name="description" content="Join Barbie's magical learning journey! A fun and fabulous way to learn." />
-    <meta name="author" content="Barbie's Learning Adventure" />
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <title>SkillSprint - Sweet Learning Journey</title>
+    <meta name="description" content="Learn coding with a sweet twist! Join our gamified learning platform." />
+    <meta name="author" content="SkillSprint" />
 
-    <meta property="og:title" content="Barbie's Learning Adventure" />
-    <meta property="og:description" content="Join Barbie's magical learning journey! A fun and fabulous way to learn." />
+    <meta property="og:title" content="SkillSprint - Sweet Learning Journey" />
+    <meta property="og:description" content="Learn coding with a sweet twist! Join our gamified learning platform." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://barbielearning.com/opengraph-image.png" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@barbielearning" />
-    <meta name="twitter:image" content="https://barbielearning.com/opengraph-image.png" />
+    <meta name="twitter:site" content="@skillsprint" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <style>
       body {
         margin: 0;
         min-height: 100vh;
         background: 
-          linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(255, 158, 205, 0.1) 50%, rgba(226, 68, 255, 0.1) 100%),
+          linear-gradient(135deg, rgba(23, 185, 120, 0.1) 0%, rgba(8, 105, 114, 0.1) 50%, rgba(7, 26, 82, 0.1) 100%),
           repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 20px);
         background-attachment: fixed;
-        font-family: 'Quicksand', sans-serif;
       }
 
-      /* Barbie-style scrollbar */
+      /* Sims-style scrollbar */
       ::-webkit-scrollbar {
         width: 12px;
       }
 
       ::-webkit-scrollbar-track {
-        background: #FFF0F6;
+        background: #F0F2F5;
         border-radius: 10px;
       }
 
       ::-webkit-scrollbar-thumb {
-        background: linear-gradient(to bottom, #FF69B4, #FF9ECD);
+        background: linear-gradient(to bottom, #17B978, #086972);
         border-radius: 10px;
-        border: 3px solid #FFF0F6;
+        border: 3px solid #F0F2F5;
       }
 
       ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(to bottom, #FF8CC6, #FFC1E0);
+        background: linear-gradient(to bottom, #1FE491, #0A8C98);
       }
 
       /* Selection color */
       ::selection {
-        background: rgba(255, 105, 180, 0.3);
-        color: #FF69B4;
+        background: rgba(23, 185, 120, 0.3);
+        color: #17B978;
       }
 
       /* Smooth scrolling */
@@ -65,7 +64,7 @@
       /* Loading animation */
       #root:empty {
         height: 100vh;
-        background: linear-gradient(135deg, #FF69B4 0%, #FF9ECD 50%, #E244FF 100%);
+        background: linear-gradient(135deg, #17B978 0%, #086972 50%, #071A52 100%);
         background-size: 400% 400%;
         animation: gradient 3s ease infinite;
       }
@@ -76,13 +75,13 @@
         100% { background-position: 0% 50%; }
       }
 
-      /* Barbie-style focus outline */
+      /* Sims-style focus outline */
       *:focus {
-        outline: 2px solid #FF69B4;
+        outline: 2px solid #17B978;
         outline-offset: 2px;
       }
 
-      /* Barbie-style buttons */
+      /* Sims-style buttons */
       button, a {
         transition: all 0.3s ease;
       }
@@ -93,39 +92,6 @@
 
       button:active, a:active {
         transform: translateY(0);
-      }
-
-      /* Sparkle effect */
-      .sparkle {
-        position: relative;
-      }
-
-      .sparkle::before,
-      .sparkle::after {
-        content: '';
-        position: absolute;
-        background: #FFF0F6;
-        border-radius: 50%;
-        animation: sparkle 1.5s ease-in-out infinite;
-      }
-
-      .sparkle::before {
-        width: 6px;
-        height: 6px;
-        top: -10px;
-        left: 50%;
-      }
-
-      .sparkle::after {
-        width: 4px;
-        height: 4px;
-        top: 50%;
-        right: -10px;
-      }
-
-      @keyframes sparkle {
-        0%, 100% { transform: scale(1); opacity: 0.5; }
-        50% { transform: scale(1.5); opacity: 1; }
       }
     </style>
   </head>

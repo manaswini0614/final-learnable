@@ -1,29 +1,44 @@
-import React from 'react';
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-interface SimsCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  variant?: 'default' | 'hover' | 'interactive';
-  className?: string;
-}
+const cardVariants = cva(
+  "rounded-xl border bg-card text-card-foreground shadow transition-all duration-300",
+  {
+    variants: {
+      variant: {
+        default: "shadow-sims hover:shadow-sims-hover",
+        interactive: "cursor-pointer shadow-sims hover:shadow-sims-hover hover:-translate-y-1",
+        ghost: "border-none shadow-none hover:bg-accent/5",
+      },
+      padding: {
+        default: "p-6",
+        sm: "p-4",
+        lg: "p-8",
+        none: "p-0",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      padding: "default",
+    },
+  }
+);
 
-export function SimsCard({ 
-  children, 
-  variant = 'default', 
-  className = '',
-  ...props 
-}: SimsCardProps) {
-  const variantClasses = {
-    default: 'sims-card',
-    hover: 'sims-card hover:scale-105',
-    interactive: 'sims-card cursor-pointer active:scale-95'
-  };
+export interface SimsCardProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof cardVariants> {}
 
-  return (
-    <div 
-      className={`${variantClasses[variant]} ${className}`}
+const SimsCard = React.forwardRef<HTMLDivElement, SimsCardProps>(
+  ({ className, variant, padding, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(cardVariants({ variant, padding, className }))}
       {...props}
-    >
-      {children}
-    </div>
-  );
-} 
+    />
+  )
+);
+
+SimsCard.displayName = "SimsCard";
+
+export { SimsCard, cardVariants }; 
