@@ -1,26 +1,49 @@
-
 import { Outlet } from "react-router-dom";
-import { Sidebar } from "./Sidebar";
-import { MobileNav } from "./MobileNav";
-import { UserProfileMenu } from "@/components/user";
-import { MobileNavExtension } from "./MobileNavExtension";
+import { motion, AnimatePresence } from 'framer-motion';
+import { GameNav } from './GameNav';
+import { UserProgress } from '../gamification/UserProgress';
 
-export function AppLayout() {
+export const AppLayout = () => {
   return (
-    <div className="flex min-h-screen bg-background">
-      <Sidebar />
-      <div className="flex-1">
-        <div className="flex items-center justify-between p-4 md:p-6 border-b border-border">
-          <MobileNav />
-          <MobileNavExtension />
-          <div className="hidden md:block ml-auto">
-            <UserProfileMenu />
-          </div>
+    <div className="min-h-screen bg-background-primary text-text-primary">
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-12 gap-6">
+          {/* Sidebar */}
+          <motion.div 
+            className="col-span-3"
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="sticky top-8 space-y-6">
+              <GameNav />
+              <UserProgress />
+            </div>
+          </motion.div>
+
+          {/* Main Content */}
+          <motion.main 
+            className="col-span-9"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="bg-background-secondary rounded-lg p-6 shadow-lg border border-background-tertiary">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={location.pathname}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <Outlet />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </motion.main>
         </div>
-        <main className="p-4 md:p-8">
-          <Outlet />
-        </main>
       </div>
     </div>
   );
-}
+};

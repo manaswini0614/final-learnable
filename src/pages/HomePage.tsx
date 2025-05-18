@@ -1,40 +1,132 @@
-
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { courses, currentUser } from "@/data/mockData";
 import StreakPointsCard from "@/components/user/StreakPointsCard";
+import { motion } from 'framer-motion';
+import { RewardsPanel } from '@/components/gamification/RewardsPanel';
+import { Card } from '@/components/ui/card';
+import { Progress } from '@/components/ui/progress';
+import {
+  Rocket,
+  Target,
+  Zap,
+  Trophy,
+  Calendar
+} from 'lucide-react';
 
 const HomePage = () => {
   const featuredCourses = courses.filter(course => course.isRecommended).slice(0, 3);
   
+  const dailyGoals = [
+    { id: 1, name: 'Complete 2 Lessons', progress: 50, icon: <Rocket className="w-5 h-5" /> },
+    { id: 2, name: 'Earn 100 XP', progress: 75, icon: <Zap className="w-5 h-5" /> },
+    { id: 3, name: 'Help a Peer', progress: 0, icon: <Target className="w-5 h-5" /> },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
-    <div className="space-y-8">
-      <section className="space-y-4">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <h1 className="text-3xl font-bold">Welcome to SkillSprint</h1>
-            <p className="text-gray-600 max-w-3xl">
-              Accelerate your growth with interactive courses, skill tracking, and a
-              supportive community. Learn, practice, and compete on your journey to mastery.
-            </p>
-          </div>
-          
-          {currentUser && (
-            <div className="flex-shrink-0">
-              <StreakPointsCard points={currentUser.points} streak={currentUser.streak} />
+    <div className="space-y-6">
+      {/* Welcome Section */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-8"
+      >
+        <h1 className="text-4xl font-bold mb-2">Welcome Back, Learner! 👋</h1>
+        <p className="text-text-secondary">Ready to continue your learning journey?</p>
+      </motion.div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Daily Goals */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Card className="p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Calendar className="w-5 h-5 text-primary" />
+              <h2 className="text-xl font-bold">Daily Goals</h2>
             </div>
-          )}
-        </div>
-        <div className="flex gap-4 pt-2">
-          <Button asChild>
-            <Link to="/courses">Explore Courses</Link>
-          </Button>
-          <Button variant="outline" asChild>
-            <Link to="/skill-graph">View Your Progress</Link>
-          </Button>
-        </div>
-      </section>
+
+            <div className="space-y-4">
+              {dailyGoals.map((goal) => (
+                <motion.div
+                  key={goal.id}
+                  variants={itemVariants}
+                  className="p-4 rounded-lg bg-background-tertiary"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                      {goal.icon}
+                    </div>
+                    <span className="font-medium">{goal.name}</span>
+                  </div>
+                  <Progress value={goal.progress} className="h-2" />
+                </motion.div>
+              ))}
+            </div>
+          </Card>
+        </motion.div>
+
+        {/* Rewards Section */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <RewardsPanel />
+        </motion.div>
+      </div>
+
+      {/* Quick Stats */}
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-3 gap-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {[
+          { label: 'Current Streak', value: '7 Days', icon: <Zap className="w-5 h-5" /> },
+          { label: 'Total XP', value: '1,600', icon: <Trophy className="w-5 h-5" /> },
+          { label: 'Global Rank', value: '#256', icon: <Target className="w-5 h-5" /> },
+        ].map((stat, index) => (
+          <motion.div
+            key={stat.label}
+            variants={itemVariants}
+            className="bg-background-secondary p-6 rounded-lg"
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex items-center gap-3">
+              <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                {stat.icon}
+              </div>
+              <div>
+                <p className="text-sm text-text-secondary">{stat.label}</p>
+                <p className="text-2xl font-bold">{stat.value}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
 
       <section className="space-y-4 pt-4">
         <div className="flex items-center justify-between">

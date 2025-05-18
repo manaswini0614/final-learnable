@@ -1,12 +1,13 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 260 85% 98%;
+    --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
     --card: 0 0% 100%;
@@ -15,10 +16,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 262 83% 58%;
+    --primary: 258 74% 74%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 75% 60%;
+    --secondary: 260 28% 52%;
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
@@ -32,39 +33,39 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 262 83% 58%;
+    --ring: 258 74% 74%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 260 50% 5%;
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
-    --card: 260 50% 10%;
+    --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 260 50% 10%;
+    --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 262 83% 58%;
+    --primary: 258 74% 74%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 280 75% 60%;
+    --secondary: 260 28% 52%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 260 50% 15%;
+    --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 260 50% 15%;
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 260 50% 15%;
-    --input: 260 50% 15%;
-    --ring: 262 83% 58%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 258 74% 74%;
   }
 
   * {
@@ -78,82 +79,27 @@
 }
 
 @layer components {
-  .game-card {
-    @apply relative overflow-hidden rounded-lg border bg-card p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02];
-    background: linear-gradient(135deg, var(--card) 0%, color-mix(in srgb, var(--card) 90%, var(--primary)) 100%);
-  }
-
-  .achievement-badge {
-    @apply inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-accent-foreground shadow-inner;
-    background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
-  }
-
-  .xp-text {
-    @apply font-semibold text-transparent bg-clip-text;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-  }
-
   .skill-level-badge {
-    @apply px-3 py-1.5 text-xs rounded-full font-medium shadow-sm transition-all duration-300;
+    @apply px-2 py-1 text-xs rounded font-medium;
   }
   
   .beginner {
-    @apply bg-green-500/20 text-green-700 dark:bg-green-500/30 dark:text-green-300;
+    @apply bg-green-100 text-green-800;
   }
   
   .intermediate {
-    @apply bg-blue-500/20 text-blue-700 dark:bg-blue-500/30 dark:text-blue-300;
+    @apply bg-blue-100 text-blue-800;
   }
   
   .advanced {
-    @apply bg-purple-500/20 text-purple-700 dark:bg-purple-500/30 dark:text-purple-300;
+    @apply bg-purple-100 text-purple-800;
   }
 
   .progress-indicator {
-    @apply h-2.5 rounded-full bg-muted overflow-hidden shadow-inner;
+    @apply h-2 rounded-full bg-gray-200 overflow-hidden;
   }
 
   .progress-bar {
-    @apply h-full rounded-full transition-all duration-500;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
-    animation: pulse 2s infinite;
+    @apply h-full rounded-full transition-all duration-300;
   }
-
-  .pixel-corners {
-    clip-path: polygon(
-      0 4px,
-      4px 4px,
-      4px 0,
-      calc(100% - 4px) 0,
-      calc(100% - 4px) 4px,
-      100% 4px,
-      100% calc(100% - 4px),
-      calc(100% - 4px) calc(100% - 4px),
-      calc(100% - 4px) 100%,
-      4px 100%,
-      4px calc(100% - 4px),
-      0 calc(100% - 4px)
-    );
-  }
-
-  .game-button {
-    @apply px-4 py-2 rounded-md font-medium transition-all duration-300
-           hover:scale-105 active:scale-95 disabled:opacity-50
-           bg-primary text-primary-foreground shadow-lg
-           hover:shadow-primary/50 pixel-corners;
-  }
-
-  .floating {
-    animation: floating 3s ease-in-out infinite;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes floating {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
