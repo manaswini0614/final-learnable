@@ -60,57 +60,91 @@ export function useFlashCards({ lessonId, currentLevel = 1 }: UseFlashCardsProps
     setMasteryPercentage((knownCards / totalCards) * 100);
   }, [cardStatuses]);
 
-  // Example flash cards with quest details
+  // Example flash cards with C/C++ quest details
   const getFlashCardsForLesson = (lessonId: string): FlashCard[] => {
     return [
       {
         id: '1',
         level: 1,
-        question: "What does the <a> tag do?",
-        answer: "It defines a hyperlink that navigates to another page or location.",
+        question: "What is Game Design?",
+        answer: "Game design is the art of creating rules, mechanics, and experiences that make up a game, focusing on player engagement and enjoyment.",
         questDetails: {
-          title: "Bridge to the HTML Castle",
-          story: "Oh no! Mario needs to reach the HTML Castle, but the bridge is broken.",
-          task: "Use the correct <a> tag to build a clickable path for Mario.",
-          correctInput: '<a href="castle.html">Go to Castle</a>',
+          title: "Barbie's Dream Game Studio",
+          story: "Welcome to Malibu Game Studios! Barbie has hired you as a junior designer to help create her new fashion and adventure game series!",
+          task: "Design a collectible system for Barbie's fashion accessories that awards style points.",
+          correctInput: 'Collect sparkly accessories (+10 style points)\nRare pink items give style boost (2x)\nTime-limited fashion challenges',
           rewards: {
             xp: 50,
-            badge: "HTML Apprentice",
-            unlockable: "Castle Theme"
+            badge: "Fashionista Designer",
+            unlockable: "Barbie's Pink Design Template"
           }
         }
       },
       {
         id: '2',
         level: 1,
-        question: "How do you add an image using HTML?",
-        answer: "Use the <img> tag with src attribute to specify the image source and alt for accessibility.",
+        question: "What are the core elements of game mechanics?",
+        answer: "Core game mechanics include rules, goals, challenges, rewards, and feedback systems that create the gameplay experience.",
         questDetails: {
-          title: "Restore the Gallery of Legends",
-          story: "The Great HTML Gallery lost all its paintings!",
-          task: "Place the missing image using the correct HTML tag.",
-          correctInput: '<img src="legend.jpg" alt="Legend Portrait">',
+          title: "Dreamhouse Designer Quest",
+          story: "Barbie's Dreamhouse needs new interactive features! Help design fun activities for Barbie and her friends.",
+          task: "Create an engaging room decoration system with rewards.",
+          correctInput: 'Hidden fashion treasures in each room\nStyle points for matching themes\nUnique rewards for different dream spaces',
           rewards: {
-            xp: 50,
-            badge: "Image Inserter",
-            unlockable: "Gallery Theme"
+            xp: 75,
+            badge: "Dreamhouse Innovator",
+            unlockable: "Pink Glitter Design Kit"
           }
         }
       },
       {
         id: '3',
         level: 2,
-        question: "What's the difference between <div> and <span>?",
-        answer: "<div> is a block-level element that starts on a new line, while <span> is an inline element used within text.",
+        question: "What is game balancing?",
+        answer: "Game balancing is the process of adjusting game mechanics, difficulty, and rewards to ensure fair, engaging, and enjoyable gameplay.",
         questDetails: {
-          title: "Fix the Layout Chaos",
-          story: "The web layout has collapsed! Blocks and text are all mixed up.",
-          task: "Use the correct tags to fix block-level and inline elements.",
-          correctInput: '<div class="container"><span>inline text</span></div>',
+          title: "Fashion Show Challenge",
+          story: "The Malibu Fashion Show game needs better challenge progression! Help Barbie create the perfect difficulty curve.",
+          task: "Design three fashion show levels with increasing complexity.",
+          correctInput: 'Level 1: Basic outfit matching, intro to trends\nLevel 2: Time-limited style challenges\nLevel 3: Ultimate fashion week showdown',
+          rewards: {
+            xp: 100,
+            badge: "Fashion Balance Expert",
+            unlockable: "Barbie's Runway Designer"
+          }
+        }
+      },
+      {
+        id: '4',
+        level: 2,
+        question: "What is level design?",
+        answer: "Level design is the creation of game environments, challenges, and progression systems that guide player experience and storytelling.",
+        questDetails: {
+          title: "Barbie World Adventure",
+          story: "Design an exciting level for Barbie's new adventure game across Malibu!",
+          task: "Create a beach-to-city adventure layout with multiple activities.",
+          correctInput: 'Malibu beach main path\nSecret boutique shortcuts\nStylish checkpoint cafes\nProgressive fashion challenges',
+          rewards: {
+            xp: 100,
+            badge: "Malibu Level Architect",
+            unlockable: "Dreamtopia Level Editor"
+          }
+        }
+      },
+      {
+        id: '5',
+        level: 3,
+        question: "What is game monetization?",
+        answer: "Game monetization involves strategies to generate revenue from games while maintaining player satisfaction and engagement.",
+        questDetails: {
+          title: "Barbie's Boutique Business",
+          story: "Help Barbie create a fair and fun shopping system for her fashion game!",
+          task: "Design a player-friendly fashion store system.",
+          correctInput: 'Collectible fashion items\nEarnable style currency\nFashion Pass system\nDaily outfit challenges',
           rewards: {
             xp: 75,
-            badge: "Layout Fixer",
-            unlockable: "Layout Theme"
+            badge: "Boutique Business Expert",
+            unlockable: "Pink Fashion Analytics"
           }
         }
       }
