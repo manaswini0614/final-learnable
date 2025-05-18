@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { FileText, BookOpen, FileVideo } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -6,6 +5,8 @@ import TimeTracker from "./TimeTracker";
 import Quiz, { QuizQuestion } from "./Quiz";
 import { useUser } from "@/contexts/UserContext";
 import PaymentPrompt from "./PaymentPrompt";
+import { FlashCards } from "./FlashCards";
+import { useFlashCards } from "@/hooks/use-flash-cards";
 
 interface LessonContentProps {
   courseId: string;
@@ -35,6 +36,9 @@ const LessonContent = ({
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizScore, setQuizScore] = useState(0);
   const [hasAccess, setHasAccess] = useState(isLevelAccessible(level.toLowerCase()));
+  const { showFlashCards, flashCards, handleLessonComplete, handleFlashCardsComplete } = useFlashCards({
+    lessonId: lessonId.toString()
+  });
 
   // Get level price based on level name
   const getLevelPrice = (level: string): number => {
@@ -67,6 +71,8 @@ const LessonContent = ({
     // Mark the level as completed if the score is high enough (e.g., > 70%)
     if (score > 70) {
       updateLevelStatus(level.toLowerCase(), { completed: true });
+      // Show flash cards after successful quiz completion
+      handleLessonComplete();
     }
   };
 
@@ -161,6 +167,13 @@ const LessonContent = ({
           lessonId={lessonId} 
           questions={quizQuestions} 
           onComplete={handleQuizComplete} 
+        />
+      )}
+
+      {showFlashCards && (
+        <FlashCards 
+          cards={flashCards} 
+          onComplete={handleFlashCardsComplete} 
         />
       )}
     </div>

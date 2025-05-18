@@ -2,25 +2,102 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>learn-path-mastery</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <title>SkillSprint - Sweet Learning Journey</title>
+    <meta name="description" content="Learn coding with a sweet twist! Join our gamified learning platform." />
+    <meta name="author" content="SkillSprint" />
 
-    <meta property="og:title" content="learn-path-mastery" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="SkillSprint - Sweet Learning Journey" />
+    <meta property="og:description" content="Learn coding with a sweet twist! Join our gamified learning platform." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:site" content="@skillsprint" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: 
+          linear-gradient(135deg, rgba(23, 185, 120, 0.1) 0%, rgba(8, 105, 114, 0.1) 50%, rgba(7, 26, 82, 0.1) 100%),
+          repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0px, rgba(255, 255, 255, 0.1) 10px, transparent 10px, transparent 20px);
+        background-attachment: fixed;
+      }
+
+      /* Sims-style scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #F0F2F5;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, #17B978, #086972);
+        border-radius: 10px;
+        border: 3px solid #F0F2F5;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to bottom, #1FE491, #0A8C98);
+      }
+
+      /* Selection color */
+      ::selection {
+        background: rgba(23, 185, 120, 0.3);
+        color: #17B978;
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Loading animation */
+      #root:empty {
+        height: 100vh;
+        background: linear-gradient(135deg, #17B978 0%, #086972 50%, #071A52 100%);
+        background-size: 400% 400%;
+        animation: gradient 3s ease infinite;
+      }
+
+      @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Sims-style focus outline */
+      *:focus {
+        outline: 2px solid #17B978;
+        outline-offset: 2px;
+      }
+
+      /* Sims-style buttons */
+      button, a {
+        transition: all 0.3s ease;
+      }
+
+      button:hover, a:hover {
+        transform: translateY(-2px);
+      }
+
+      button:active, a:active {
+        transform: translateY(0);
+      }
+    </style>
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
