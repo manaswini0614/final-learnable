@@ -87,3 +87,17 @@ export default function HomePage() {
     </div>
   );
 }
+// tailwind.config.js
+module.exports = {
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+  theme: {
+    extend: {
+      boxShadow: {
+        'barbie': '0 4px 10px rgba(255, 105, 180, 0.4)', // Custom Barbie shadow
+        'barbie-hover': '0 6px 14px rgba(255, 105, 180, 0.6)', // Custom hover shadow
+      },
+    },
+  },
+  plugins: [],
+};
+
